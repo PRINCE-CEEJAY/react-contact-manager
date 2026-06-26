@@ -1,19 +1,16 @@
-import { useState, type FormEvent } from 'react';
-import type { ContactType } from '../hooks/useContact';
-
-interface ContactFormProps {
-  addContact: (contact: Omit<ContactType, 'id'>) => void;
-}
-export default function ContactForm({ addContact }: ContactFormProps) {
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../contactSlice';
+export default function ContactForm() {
   const [contactInput, setContactInput] = useState({ name: '', number: '' });
+
+  const dispatch = useDispatch()
 
   function handleAddContact(e: FormEvent) {
     e.preventDefault();
-    if (!contactInput.name && !contactInput.number) {
-      alert('please fill the input filleds');
-      return;
-    }
-    addContact(contactInput);
+    if (!contactInput.name.trim() && !contactInput.number.trim()) return;
+
+    dispatch(addContact(contactInput));
     setContactInput({ name: '', number: '' });
   }
 

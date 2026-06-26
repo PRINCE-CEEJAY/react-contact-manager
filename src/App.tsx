@@ -1,18 +1,12 @@
-import ContactForm from './components/ContactForm';
-import ContactList from './components/ContactList';
-import { useContact } from './hooks/useContact';
+import ContactList from "./features/components/ContactList"
+import ContactForm from "./features/components/ContactForm"
 
-export default function App() {
-  const { contacts, addContact, deleteContact, updateContact } = useContact();
-  return (
+export default function App(){
+
+  return(
     <div className='container'>
-      <h1 className='fancy-text uppercase'>Contact Manager</h1>
-      <ContactForm addContact={addContact} />
-      <ContactList
-        contacts={contacts}
-        deleteContact={deleteContact}
-        updateContact={updateContact}
-      />
+    <ContactForm /> 
+    <ContactList/>
     </div>
-  );
+  )
 }

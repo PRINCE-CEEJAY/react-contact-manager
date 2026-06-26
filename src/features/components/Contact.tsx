@@ -1,5 +1,5 @@
 import { Edit, Trash } from 'lucide-react';
-import type { ContactType } from '../hooks/useContact';
+import type { ContactType } from '../../hooks/useContact';
 
 interface ContactProps {
   contact: ContactType;

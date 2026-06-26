@@ -1,11 +1,13 @@
 import { Edit, Trash } from 'lucide-react';
 import type { ContactType } from '../../hooks/useContact';
-
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../contactSlice';
 interface ContactProps {
   contact: ContactType;
 }
 
 export default function Contact({ contact }: ContactProps) {
+  const dispatch = useDispatch();
   function handleUpdate(id: string) {
     const newName = prompt('What is the new name');
     const newNumber = prompt('What is the new number');
@@ -36,7 +38,7 @@ export default function Contact({ contact }: ContactProps) {
           </button>
           <button
             className='btn btn-full btn-danger'
-            onClick={() => deleteContact(contact.id)}
+            onClick={() => dispatch(deleteContact(contact.id))}
           >
             {' '}
             <Trash />

@@ -3,15 +3,9 @@ import type { ContactType } from '../../hooks/useContact';
 
 interface ContactProps {
   contact: ContactType;
-  deleteContact: (id: string) => void;
-  updateContact: (id: string, data: Partial<ContactType>) => void;
 }
 
-export default function Contact({
-  contact,
-  deleteContact,
-  updateContact,
-}: ContactProps) {
+export default function Contact({ contact }: ContactProps) {
   function handleUpdate(id: string) {
     const newName = prompt('What is the new name');
     const newNumber = prompt('What is the new number');
@@ -23,7 +17,7 @@ export default function Contact({
       number: newNumber.trim(),
     };
 
-    updateContact(id, data);
+    // handle update
   }
   return (
     <div className='card m-2'>
